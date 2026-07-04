@@ -7,7 +7,7 @@
 {
   imports = [
     # Módulo HM de Niri — habilita programs.niri.settings
-    inputs.niri-flake.homeModules.niri
+    #inputs.niri-flake.homeModules.niri
     # Módulo HM de Noctalia — habilita programs.noctalia-shell
     inputs.noctalia.homeModules.default
   ];
