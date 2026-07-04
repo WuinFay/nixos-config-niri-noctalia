@@ -115,6 +115,8 @@
     atk
     xorg.libX11
     xorg.libXtst
+    icu        # ← para tModLoader
+    openssl    # ← para tModLoader
   ];
 
   # ── Nautilus — abrir terminal con clic derecho ────────────────
