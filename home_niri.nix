@@ -7,7 +7,7 @@
 {
   imports = [
     # Módulo HM de Niri — habilita programs.niri.settings
-    #inputs.niri-flake.homeModules.niri
+    inputs.niri-flake.homeModules.niri
     # Módulo HM de Noctalia — habilita programs.noctalia-shell
     inputs.noctalia.homeModules.default
   ];
@@ -16,15 +16,7 @@
   home.username    = "lonso";
   home.homeDirectory = "/home/lonso";
   home.stateVersion  = "26.05";
-home.file.".config/niri/scripts/screenshot.sh" = {
-  source = ./scripts/screenshot-niri.sh; executable = true;
-};
-home.file.".local/bin/cpu-profile-toggle" = {
-  source = ./scripts/cpu-profile-toggle.sh; executable = true;
-};
-home.file.".local/bin/cpu-profile-status" = {
-  source = ./scripts/cpu-profile-status.sh; executable = true;
-};
+
   # ── Niri — compositor Wayland ─────────────────────────────────
   programs.niri.settings = {
 
@@ -84,87 +76,84 @@ home.file.".local/bin/cpu-profile-status" = {
     prefer-no-csd = true;
 
     # ── Keybinds ─────────────────────────────────────────────────
-    # Equivalencias con tu config de Sway, adaptadas a Niri.
-    # Niri usa columnas scrollables — Left/Right mueven entre columnas,
-    # Up/Down mueven entre ventanas en la misma columna.
-    binds = with inputs.niri-flake.lib.actions; {
+    # Sintaxis directa en Nix — sin helpers externos.
+    # Cada bind: "Key".action.nombre-accion = argumento;
+    # Sin args: = {};   Con string: = "valor";   Con lista: = ["a" "b"];
+    binds = {
 
       # ── Apps ──────────────────────────────────────────────────
-      "Mod+Return".action   = spawn "sakura";
-      "Mod+Shift+O".action  = spawn "obs";
-      "Mod+M".action        = spawn "gnome-text-editor";
-      "Mod+Q".action        = close-window;
+      "Mod+Return".action.spawn  = [ "sakura" ];
+      "Mod+Shift+O".action.spawn = [ "obs" ];
+      "Mod+M".action.spawn       = [ "gnome-text-editor" ];
+      "Mod+Q".action.close-window = {};
 
       # ── Capturas de pantalla ──────────────────────────────────
-      "Print".action       = spawn [ "/home/lonso/.config/niri/scripts/screenshot.sh" "screen" ];
-      "Shift+Print".action = spawn [ "/home/lonso/.config/niri/scripts/screenshot.sh" "area" ];
-      "Mod+Print".action   = spawn [ "/home/lonso/.config/niri/scripts/screenshot.sh" "active" ];
+      "Print".action.spawn       = [ "/home/lonso/.config/niri/scripts/screenshot.sh" "screen" ];
+      "Shift+Print".action.spawn = [ "/home/lonso/.config/niri/scripts/screenshot.sh" "area" ];
+      "Mod+Print".action.spawn   = [ "/home/lonso/.config/niri/scripts/screenshot.sh" "active" ];
 
       # ── Audio ─────────────────────────────────────────────────
-      "XF86AudioRaiseVolume".action = spawn [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%" ];
-      "XF86AudioLowerVolume".action = spawn [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%" ];
-      "XF86AudioMute".action        = spawn [ "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle" ];
+      "XF86AudioRaiseVolume".action.spawn = [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%" ];
+      "XF86AudioLowerVolume".action.spawn = [ "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%" ];
+      "XF86AudioMute".action.spawn        = [ "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle" ];
 
       # ── Portapapeles ──────────────────────────────────────────
-      # Noctalia integra cliphist en su launcher — este atajo abre el picker
-      # Si prefieres un comando directo: spawn ["bash" "-c" "cliphist list | ..."]
-      "Mod+Shift+X".action = spawn [ "bash" "-c" "cliphist list | noctalia-shell ipc clipboard-pick | cliphist decode | wl-copy" ];
+      "Mod+Shift+X".action.spawn = [ "bash" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy" ];
 
-      # ── Foco (columnas y ventanas) ────────────────────────────
-      "Mod+Left".action        = focus-column-left;
-      "Mod+Right".action       = focus-column-right;
-      "Mod+Up".action          = focus-window-up;
-      "Mod+Down".action        = focus-window-down;
-      "Mod+H".action           = focus-column-left;
-      "Mod+L".action           = focus-column-right;
-      "Mod+K".action           = focus-window-up;
-      "Mod+J".action           = focus-window-down;
+      # ── Foco ──────────────────────────────────────────────────
+      "Mod+Left".action.focus-column-left   = {};
+      "Mod+Right".action.focus-column-right = {};
+      "Mod+Up".action.focus-window-up       = {};
+      "Mod+Down".action.focus-window-down   = {};
+      "Mod+H".action.focus-column-left      = {};
+      "Mod+L".action.focus-column-right     = {};
+      "Mod+K".action.focus-window-up        = {};
+      "Mod+J".action.focus-window-down      = {};
 
       # ── Mover ventanas ────────────────────────────────────────
-      "Mod+Shift+Left".action  = move-column-left;
-      "Mod+Shift+Right".action = move-column-right;
-      "Mod+Shift+Up".action    = move-window-up;
-      "Mod+Shift+Down".action  = move-window-down;
+      "Mod+Shift+Left".action.move-column-left   = {};
+      "Mod+Shift+Right".action.move-column-right = {};
+      "Mod+Shift+Up".action.move-window-up       = {};
+      "Mod+Shift+Down".action.move-window-down   = {};
 
       # ── Workspaces ────────────────────────────────────────────
-      "Mod+1".action = focus-workspace 1;
-      "Mod+2".action = focus-workspace 2;
-      "Mod+3".action = focus-workspace 3;
-      "Mod+4".action = focus-workspace 4;
-      "Mod+5".action = focus-workspace 5;
-      "Mod+6".action = focus-workspace 6;
-      "Mod+7".action = focus-workspace 7;
-      "Mod+8".action = focus-workspace 8;
-      "Mod+9".action = focus-workspace 9;
-      "Mod+0".action = focus-workspace 10;
+      "Mod+1".action.focus-workspace = 1;
+      "Mod+2".action.focus-workspace = 2;
+      "Mod+3".action.focus-workspace = 3;
+      "Mod+4".action.focus-workspace = 4;
+      "Mod+5".action.focus-workspace = 5;
+      "Mod+6".action.focus-workspace = 6;
+      "Mod+7".action.focus-workspace = 7;
+      "Mod+8".action.focus-workspace = 8;
+      "Mod+9".action.focus-workspace = 9;
+      "Mod+0".action.focus-workspace = 10;
 
-      "Mod+Shift+1".action = move-column-to-workspace 1;
-      "Mod+Shift+2".action = move-column-to-workspace 2;
-      "Mod+Shift+3".action = move-column-to-workspace 3;
-      "Mod+Shift+4".action = move-column-to-workspace 4;
-      "Mod+Shift+5".action = move-column-to-workspace 5;
-      "Mod+Shift+6".action = move-column-to-workspace 6;
-      "Mod+Shift+7".action = move-column-to-workspace 7;
-      "Mod+Shift+8".action = move-column-to-workspace 8;
-      "Mod+Shift+9".action = move-column-to-workspace 9;
-      "Mod+Shift+0".action = move-column-to-workspace 10;
+      "Mod+Shift+1".action.move-column-to-workspace = 1;
+      "Mod+Shift+2".action.move-column-to-workspace = 2;
+      "Mod+Shift+3".action.move-column-to-workspace = 3;
+      "Mod+Shift+4".action.move-column-to-workspace = 4;
+      "Mod+Shift+5".action.move-column-to-workspace = 5;
+      "Mod+Shift+6".action.move-column-to-workspace = 6;
+      "Mod+Shift+7".action.move-column-to-workspace = 7;
+      "Mod+Shift+8".action.move-column-to-workspace = 8;
+      "Mod+Shift+9".action.move-column-to-workspace = 9;
+      "Mod+Shift+0".action.move-column-to-workspace = 10;
 
-      # Scroll entre workspaces con rueda del ratón
-      "Mod+WheelScrollUp".action   = focus-workspace-up;
-      "Mod+WheelScrollDown".action = focus-workspace-down;
+      # Scroll entre workspaces
+      "Mod+WheelScrollUp"   = { cooldown-ms = 150; action.focus-workspace-up   = {}; };
+      "Mod+WheelScrollDown" = { cooldown-ms = 150; action.focus-workspace-down = {}; };
 
       # ── Diseño ────────────────────────────────────────────────
-      "Mod+F".action           = fullscreen-window;
-      "Mod+Shift+Space".action = toggle-window-floating;
-      "Mod+Space".action       = switch-focus-between-floating-and-tiling;
+      "Mod+F".action.fullscreen-window                          = {};
+      "Mod+Shift+Space".action.toggle-window-floating           = {};
+      "Mod+Space".action.switch-focus-between-floating-and-tiling = {};
 
-      # Scroll por columnas (propio de Niri — no existe en Sway)
-      "Mod+Shift+WheelScrollUp".action   = focus-column-left;
-      "Mod+Shift+WheelScrollDown".action = focus-column-right;
+      "Mod+Shift+WheelScrollUp"   = { cooldown-ms = 150; action.focus-column-left  = {}; };
+      "Mod+Shift+WheelScrollDown" = { cooldown-ms = 150; action.focus-column-right = {}; };
 
-      # ── CPU profiles (tus aliases siguen funcionando en terminal) ─
-      "Mod+F5".action = spawn [ "sudo" "/run/current-system/sw/bin/perfil-cpu" "normal" ];
-      "Mod+F6".action = spawn [ "sudo" "/run/current-system/sw/bin/perfil-cpu" "turbo" ];
+      # ── CPU profiles ──────────────────────────────────────────
+      "Mod+F5".action.spawn = [ "sudo" "/run/current-system/sw/bin/perfil-cpu" "normal" ];
+      "Mod+F6".action.spawn = [ "sudo" "/run/current-system/sw/bin/perfil-cpu" "turbo" ];
     };
 
     # ── Reglas de ventana ─────────────────────────────────────
