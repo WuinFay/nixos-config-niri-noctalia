@@ -114,8 +114,8 @@
     cairo
     gdk-pixbuf
     atk
-    xorg.libX11
-    xorg.libXtst
+    libx11      # antes: xorg.libX11
+    libxtst     # antes: xorg.libXtst
     icu        # ← para tModLoader
     openssl    # ← para tModLoader
   ];
@@ -133,16 +133,8 @@
   # Aquí solo declaramos el portal GTK para selectores de archivos y diálogos.
 xdg.portal = {
   enable       = true;
-  extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-gnome   # ← agrega esto
-  ];
-  config.common = {
-    default = [ "gtk" ];
-    "org.freedesktop.impl.portal.ScreenCast"  = [ "gnome" ];  # ← screenshare
-    "org.freedesktop.impl.portal.Screenshot"  = [ "gnome" ];  # ← screenshots via portal
-    "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
-  };
+  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  config.common.default = "*";  # ← esto elimina el warning y deja que niri-flake maneje ScreenCast
 };
 
   # ── Gestor de sesión — greetd + tuigreet ─────────────────────
