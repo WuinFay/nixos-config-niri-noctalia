@@ -132,18 +132,17 @@
   # niri-flake.nixosModules.niri ya configura el portal de screenshare.
   # Aquí solo declaramos el portal GTK para selectores de archivos y diálogos.
 xdg.portal = {
-  enable       = true;
-  extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-gnome   # ← agrega esto
-  ];
-  config.common = {
-    default = [ "gtk" ];
-    "org.freedesktop.impl.portal.ScreenCast"    = [ "gnome" ];
-    "org.freedesktop.impl.portal.Screenshot"    = [ "gnome" ];
-    "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
-  };
+  enable = true;
+  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];  # solo gtk
+  config.common.default = [ "gtk" ];
 };
+ # config.common = {
+ #  default = [ "gtk" ];
+  #  "org.freedesktop.impl.portal.ScreenCast"    = [ "gnome" ];
+   # "org.freedesktop.impl.portal.Screenshot"    = [ "gnome" ];
+    #"org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
+  #};
+#};
 
   # ── Gestor de sesión — greetd + tuigreet ─────────────────────
   # CAMBIO: --cmd sway → --cmd niri
@@ -291,20 +290,21 @@ services.greetd = {
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
   # Módulo niri-flake — instala portal file, D-Bus service y ScreenCast
-  programs.niri.enable = true;
+  #programs.niri.enable = true;
 
   # ── Nix store — optimización y GC ────────────────────────────
-  nix = {
-    settings = {
-      auto-optimise-store   = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-    gc = {
-      automatic = true;
-      dates     = "weekly";
-      options   = "--delete-older-than 7d";
-    };
+nix = {
+  settings = {
+    auto-optimise-store   = true;
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users         = [ "root" "lonso" ];  # ← agregado
   };
+  gc = {
+    automatic = true;
+    dates     = "weekly";
+    options   = "--delete-older-than 7d";
+  };
+};
 
   # ── Fuentes ───────────────────────────────────────────────────
   fonts.packages = with pkgs; [
@@ -320,9 +320,10 @@ services.greetd = {
     # Hardware / periféricos
     openrazer-daemon
     polychromatic
-    #niri
+    niri
     pkgs.xwayland-satellite
     xorg.libXcursor
+    pkgs.proton-vpn
     xorg.libX11
     xcursor-themes
     librewolf

@@ -23,8 +23,8 @@ input {
 
 layout {
     gaps 7
+    default-column-width { proportion 1.0; }  
     border {
-//        on
         width 3
         active-color "#00d4ffff"
         inactive-color "#16161eff"
@@ -45,7 +45,9 @@ binds {
     "Mod+M" { spawn "gnome-text-editor"; }
     "Mod+Q" { close-window; }
 
-// P
+    "Mod+D" hotkey-overlay-title="Toggle Launcher" { 
+        spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; 
+    }
 "Print" { spawn "/home/lonso/.config/niri/scripts/screenshot.sh" "screen"; }
 "Shift+Print" { spawn "/home/lonso/.config/niri/scripts/screenshot.sh" "area"; }
 "Mod+Print" { spawn "/home/lonso/.config/niri/scripts/screenshot.sh" "active"; }

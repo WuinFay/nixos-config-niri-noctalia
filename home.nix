@@ -56,57 +56,6 @@
     };
 
     # ── Configuración del shell ───────────────────────────────────
-    settings = {
-
-      # Barra superior
-      bar = {
-        position          = "top";
-        backgroundOpacity = 0.88;
-        # Widgets: configurar desde la GUI de Noctalia tras el primer arranque
-        # o añadir aquí según documentación de la versión instalada
-      };
-
-      # Dock inferior (auto-hide)
-      dock = {
-        enabled     = true;
-        position    = "bottom";
-        displayMode = "auto_hide";
-        pinnedApps  = [
-          "chromium"
-          "obsidian"
-          "vesktop"
-          "steam"
-          "org.gnome.Nautilus"
-          "sakura"
-        ];
-      };
-
-      # Luz nocturna (reemplaza wlsunset)
-      # Ajuste: 7pm → 3500K, 7am → 6500K (igual que tu wlsunset anterior)
-      nightLight = {
-        enabled       = false; # activar manualmente cuando lo quieras
-        nightTemp     = "3500";
-        dayTemp       = "6500";
-        manualSunrise = "07:00";
-        manualSunset  = "19:00";
-      };
-
-      # Menú de sesión (reemplaza wlogout)
-      sessionMenu.enabled = true;
-
-      # Idle / lock (reemplaza swayidle + swaylock)
-      idle = {
-        enabled          = true;
-        screenOffTimeout = 600;  # 10 min → apagar pantalla
-        lockTimeout      = 660;  # 11 min → bloquear
-        suspendTimeout   = 1800; # 30 min → suspender
-      };
-
-      # General
-      general = {
-        lockOnSuspend    = true;
-        telemetryEnabled = false;
-      };
-    };
+  settings = builtins.fromJSON (builtins.readFile ./noctalia-settings.json);
   };
 }

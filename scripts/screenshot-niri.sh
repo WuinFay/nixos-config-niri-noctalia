@@ -1,66 +1,36 @@
 #!/usr/bin/env bash
 # ~/.config/niri/scripts/screenshot.sh
-# Capturas de pantalla para Niri compositor
-# Adaptado desde ~/.config/sway/scripts/screenshot.sh
-#
-# Diferencias clave vs Sway:
-#   - No usa swaymsg → usa `niri msg --json` para info de ventanas
-#   - Requiere: grim, slurp, wl-clipboard, jq
-# ──────────────────────────────────────────────────────────────
+# Capturas de pantalla para Niri (corregido para JSON real)
 
-# Directorio de destino — créalo si no existe
 SAVEDIR="$HOME/Imágenes/Capturas"
 mkdir -p "$SAVEDIR"
-
-# Nombre del archivo con timestamp
 FILENAME="$SAVEDIR/captura_$(date +%Y%m%d_%H%M%S).png"
 
 MODE="${1:-screen}"
 
 case "$MODE" in
-
-  # ── Pantalla completa ──────────────────────────────────────
   screen)
-    grim "$FILENAME" && \
-      wl-copy < "$FILENAME" && \
-      notify-send "Captura de pantalla" "Pantalla completa guardada" \
-        --icon="$FILENAME" 2>/dev/null || true
+    grim "$FILENAME" && wl-copy < "$FILENAME" && notify-send "Captura" "Pantalla completa" --icon="$FILENAME"
     ;;
-
-  # ── Área seleccionada con slurp ───────────────────────────
   area)
     REGION=$(slurp 2>/dev/null) || exit 0
-    grim -g "$REGION" "$FILENAME" && \
-      wl-copy < "$FILENAME" && \
-      notify-send "Captura de pantalla" "Área seleccionada guardada" \
-        --icon="$FILENAME" 2>/dev/null || true
+    grim -g "$REGION" "$FILENAME" && wl-copy < "$FILENAME" && notify-send "Captura" "Área seleccionada" --icon="$FILENAME"
     ;;
-
-  # ── Ventana activa ────────────────────────────────────────
-  # Niri expone la geometría de la ventana enfocada vía IPC.
-  # A diferencia de Sway (que usaba swaymsg -t get_tree),
-  # Niri usa: niri msg --json focused-window
   active)
-    # Obtener geometría de la ventana enfocada
+    # Obtener JSON de la ventana enfocada
     WINDOW_JSON=$(niri msg --json focused-window 2>/dev/null)
-
     if [ -z "$WINDOW_JSON" ] || [ "$WINDOW_JSON" = "null" ]; then
-      notify-send "Captura de pantalla" "No hay ventana enfocada" 2>/dev/null || true
-      exit 1
+      notify-send "Captura" "No hay ventana enfocada" && exit 1
     fi
 
-    # Extraer coordenadas con jq
-    X=$(echo "$WINDOW_JSON"      | jq -r '.geometry.x      // empty')
-    Y=$(echo "$WINDOW_JSON"      | jq -r '.geometry.y      // empty')
-    W=$(echo "$WINDOW_JSON"      | jq -r '.geometry.width  // empty')
-    H=$(echo "$WINDOW_JSON"      | jq -r '.geometry.height // empty')
+    # Extraer offset y tamaño desde layout
+    X=$(echo "$WINDOW_JSON" | jq -r '.layout.window_offset_in_tile[0] // empty')
+    Y=$(echo "$WINDOW_JSON" | jq -r '.layout.window_offset_in_tile[1] // empty')
+    W=$(echo "$WINDOW_JSON" | jq -r '.layout.window_size[0] // empty')
+    H=$(echo "$WINDOW_JSON" | jq -r '.layout.window_size[1] // empty')
 
     if [ -z "$X" ] || [ -z "$Y" ] || [ -z "$W" ] || [ -z "$H" ]; then
-      # Fallback: si la geometría no está disponible en la versión de Niri,
-      # abrir slurp para que el usuario seleccione la ventana manualmente
-      notify-send "Captura de pantalla" \
-        "Geometría no disponible — selecciona la ventana manualmente" \
-        2>/dev/null || true
+      # Fallback a slurp si algo falla
       REGION=$(slurp 2>/dev/null) || exit 0
       grim -g "$REGION" "$FILENAME"
     else
@@ -68,11 +38,8 @@ case "$MODE" in
       grim -g "$REGION" "$FILENAME"
     fi
 
-    wl-copy < "$FILENAME" && \
-      notify-send "Captura de pantalla" "Ventana activa guardada" \
-        --icon="$FILENAME" 2>/dev/null || true
+    wl-copy < "$FILENAME" && notify-send "Captura" "Ventana activa" --icon="$FILENAME"
     ;;
-
   *)
     echo "Uso: screenshot.sh [screen|area|active]"
     exit 1
