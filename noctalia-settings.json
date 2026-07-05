@@ -127,6 +127,15 @@
       ],
       "right": [
         {
+          "blacklist": [],
+          "chevronColor": "none",
+          "colorizeIcons": false,
+          "drawerEnabled": true,
+          "hidePassive": false,
+          "id": "Tray",
+          "pinned": []
+        },
+        {
           "colorizeDistroLogo": false,
           "colorizeSystemIcon": "none",
           "colorizeSystemText": "none",

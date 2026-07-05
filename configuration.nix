@@ -366,7 +366,7 @@ nix = {
     networkmanagerapplet
 
     # GPU / sistema
-    vulkan-tools radeontop amdgpu_top ryzenadj
+    vulkan-tools radeontop ryzenadj
 
     # Archivos / compresión
     exfatprogs ntfs3g p7zip unrar
