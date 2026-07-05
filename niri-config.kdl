@@ -1,8 +1,3 @@
-# Respaldar el archivo actual
-mv ~/.config/niri/config.kdl ~/.config/niri/config.kdl.old
-
-# Crear el archivo limpio desde cero
-cat > ~/.config/niri/config.kdl << 'EOF'
 // Niri config — Ryzen 5 5600G / RX 7600
 
 output "HDMI-A-1" {
@@ -40,11 +35,10 @@ layout {
 
 prefer-no-csd true
 
-spawn-at-startup [
+spawn-at-startup 
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "/run/current-system/sw/bin/lxqt-policykit-agent"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store"
-]
 
 binds {
     "Mod+Return" { spawn "sakura"; }
@@ -155,4 +149,4 @@ window-rule {
     match app-id="org\\.sober\\.Sober"
     open-fullscreen true
 }
-EOF
+
