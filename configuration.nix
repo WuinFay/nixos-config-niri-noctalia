@@ -133,8 +133,16 @@
   # Aquí solo declaramos el portal GTK para selectores de archivos y diálogos.
 xdg.portal = {
   enable       = true;
-  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  config.common.default = "*";  # ← esto elimina el warning y deja que niri-flake maneje ScreenCast
+  extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-gnome   # ← agrega esto
+  ];
+  config.common = {
+    default = [ "gtk" ];
+    "org.freedesktop.impl.portal.ScreenCast"    = [ "gnome" ];
+    "org.freedesktop.impl.portal.Screenshot"    = [ "gnome" ];
+    "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
+  };
 };
 
   # ── Gestor de sesión — greetd + tuigreet ─────────────────────
@@ -205,7 +213,15 @@ services.greetd = {
       ExecStart       = "${pkgs.ryzenadj}/bin/ryzenadj --tctl-temp=75";
     };
   };
-
+  systemd.services.greetd.serviceConfig = {
+  Type        = "idle";
+  StandardInput  = "tty";
+  StandardOutput = "tty";
+  StandardError  = "journal";
+  TTYReset       = true;
+  TTYVHangup     = true;
+  TTYVTDisallocate = true;
+};
   # ── ZRAM ──────────────────────────────────────────────────────
   zramSwap = {
     enable        = true;
@@ -232,14 +248,15 @@ services.greetd = {
   # ── Variables de sesión ───────────────────────────────────────
   environment.sessionVariables = {
     # GPU / Wine
+    XDG_CURRENT_DESKTOP = "gnome:niri";  # ← cambia el "niri" actual por esto
     WINEESYNC                          = "1";
     WINEFSYNC                          = "1";
     RADV_PERFTEST                      = "gpl";
     mesa_glthread                      = "true";
     MESA_SHADER_CACHE_MAX_SIZE         = "1G";
     NIXOS_OZONE_WL                     = "1";
-    # Wayland / backends
-    XDG_CURRENT_DESKTOP                = "niri";
+    #Wayland / backends
+    #XDG_CURRENT_DESKTOP                = "niri";
     GDK_BACKEND                        = "wayland";
     QT_QPA_PLATFORM                    = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -273,6 +290,8 @@ services.greetd = {
   programs.steam.enable    = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
+  # Módulo niri-flake — instala portal file, D-Bus service y ScreenCast
+  programs.niri.enable = true;
 
   # ── Nix store — optimización y GC ────────────────────────────
   nix = {
@@ -301,7 +320,7 @@ services.greetd = {
     # Hardware / periféricos
     openrazer-daemon
     polychromatic
-    niri
+    #niri
     pkgs.xwayland-satellite
     xorg.libXcursor
     xorg.libX11

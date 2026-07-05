@@ -24,16 +24,16 @@ input {
 layout {
     gaps 7
     border {
-        on
+//        on
         width 3
         active-color "#00d4ffff"
         inactive-color "#16161eff"
     }
 }
 
-prefer-no-csd true
+prefer-no-csd
 
-spawn-at-startup 
+
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "/run/current-system/sw/bin/lxqt-policykit-agent"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store"

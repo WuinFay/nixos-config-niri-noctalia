@@ -45,7 +45,7 @@
         ./configuration.nix
 
         # Módulo NixOS de Niri: habilita el paquete, portales y sistema base
-        #niri-flake.nixosModules.niri
+        niri-flake.nixosModules.niri
 
         # Módulo NixOS de Home Manager
         home-manager.nixosModules.home-manager
