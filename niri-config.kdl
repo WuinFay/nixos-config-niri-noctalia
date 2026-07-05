@@ -50,6 +50,10 @@ binds {
     "Mod+D" hotkey-overlay-title="Toggle Launcher" { 
         spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; 
     }
+    
+"Mod+Ctrl+S" { spawn "niri" "msg" "action" "set-dynamic-cast-monitor" "focused"; }
+
+    
 "Print" { spawn "/home/lonso/.config/niri/scripts/screenshot.sh" "screen"; }
 "Shift+Print" { spawn "/home/lonso/.config/niri/scripts/screenshot.sh" "area"; }
 "Mod+Print" { spawn "/home/lonso/.config/niri/scripts/screenshot.sh" "active"; }
