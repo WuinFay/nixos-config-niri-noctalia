@@ -301,7 +301,7 @@
     # Hardware / periféricos
     openrazer-daemon
     polychromatic
-
+    niri
     # Terminal / shell
     sakura micro fastfetch htop config.boot.kernelPackages.cpupower
 
