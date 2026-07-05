@@ -302,6 +302,7 @@
     openrazer-daemon
     polychromatic
     niri
+    librewolf
     # Terminal / shell
     sakura micro fastfetch htop config.boot.kernelPackages.cpupower
 
