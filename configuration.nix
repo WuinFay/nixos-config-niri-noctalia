@@ -131,24 +131,31 @@
   # de Sway que necesitaba xdg-desktop-portal-wlr).
   # niri-flake.nixosModules.niri ya configura el portal de screenshare.
   # Aquí solo declaramos el portal GTK para selectores de archivos y diálogos.
-  xdg.portal = {
-    enable       = true;
-    # wlr.enable eliminado — era específico de Sway/wlroots
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = [ "gtk" ];
+xdg.portal = {
+  enable       = true;
+  extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-gnome   # ← agrega esto
+  ];
+  config.common = {
+    default = [ "gtk" ];
+    "org.freedesktop.impl.portal.ScreenCast"  = [ "gnome" ];  # ← screenshare
+    "org.freedesktop.impl.portal.Screenshot"  = [ "gnome" ];  # ← screenshots via portal
+    "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
   };
+};
 
   # ── Gestor de sesión — greetd + tuigreet ─────────────────────
   # CAMBIO: --cmd sway → --cmd niri
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri";
-        user    = "greeter";
-      };
+services.greetd = {
+  enable = true;
+  settings = {
+    default_session = {
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri --session'";
+      user    = "greeter";
     };
   };
+};
 
   # ── AMD GPU — drivers 64 + 32 bit ────────────────────────────
   hardware.graphics = {
@@ -303,6 +310,10 @@
     openrazer-daemon
     polychromatic
     niri
+    pkgs.xwayland-satellite
+    xorg.libXcursor
+    xorg.libX11
+    xcursor-themes
     librewolf
     # Terminal / shell
     sakura micro fastfetch htop config.boot.kernelPackages.cpupower
