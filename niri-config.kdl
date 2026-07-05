@@ -109,8 +109,8 @@ binds {
     "Mod+Shift+WheelScrollUp" cooldown-ms=150 { focus-column-left; }
     "Mod+Shift+WheelScrollDown" cooldown-ms=150 { focus-column-right; }
 
-    "Mod+F5" { spawn "sudo" "/run/current-system/sw/bin/perfil-cpu" "normal"; }
-    "Mod+F6" { spawn "sudo" "/run/current-system/sw/bin/perfil-cpu" "turbo"; }
+"Mod+Shift+T" { spawn "sudo" "/run/current-system/sw/bin/perfil-cpu" "turbo"; }
+"Mod+Shift+N" { spawn "sudo" "/run/current-system/sw/bin/perfil-cpu" "normal"; }
 }
 
 window-rule {
