@@ -18,10 +18,13 @@
   home.stateVersion  = "26.05";
 
   # ── Niri — compositor Wayland ─────────────────────────────────
-  home.file = {
-    ".config/niri/config.kdl".source = ./niri-config.kdl;
-    ".config/niri/scripts/screenshot.sh".source = ./scripts/screenshot-niri.sh;
+home.file = {
+  ".config/niri/config.kdl".source = ./niri-config.kdl;
+  ".config/niri/scripts/screenshot.sh" = {
+    source = ./scripts/screenshot-niri.sh;
+    executable = true;   # ← añade esto
   };
+};
 
   # ── Noctalia — desktop shell unificado ────────────────────────
   # Reemplaza: Waybar + Rofi + Wlogout + Swaylock + Swayidle + Wlsunset
