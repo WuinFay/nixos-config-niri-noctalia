@@ -99,8 +99,9 @@
   # el paquete Niri y configura el sistema. Solo necesitamos dconf y polkit.
   # programs.sway eliminado — reemplazado por Niri
   programs.dconf.enable  = true;
+  programs.xwayland.enable = true;
   security.polkit.enable = true;
-
+  
   # ── nix-ld — para binarios foráneos (playit.gg, etc.) ─────────
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
