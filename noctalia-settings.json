@@ -102,21 +102,21 @@
           "id": "Workspace",
           "labelMode": "index",
           "occupiedColor": "secondary",
-          "pillSize": 0.74,
+          "pillSize": 0.67,
           "showApplications": false,
           "showApplicationsHover": false,
           "showBadge": true,
-          "showLabelsOnlyWhenOccupied": true,
+          "showLabelsOnlyWhenOccupied": false,
           "unfocusedIconsOpacity": 1
         },
         {
           "clockColor": "none",
-          "customFont": "",
+          "customFont": "Mononoki Nerd Font",
           "formatHorizontal": "h:mm AP",
           "formatVertical": "h:mm AP",
           "id": "Clock",
           "tooltipFormat": "h:mm AP",
-          "useCustomFont": false
+          "useCustomFont": true
         },
         {
           "displayMode": "onhover",

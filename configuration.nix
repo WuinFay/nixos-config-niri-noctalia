@@ -134,10 +134,15 @@
   # ── XDG Portals ───────────────────────────────────────────────
 xdg.portal = {
   enable = true;
-  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  config.common.default = [ "gtk" ];
+  extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-wlr   # ← este es el que necesitas
+  ];
+  config.common = {
+    default = [ "gtk" "wlr" ];
+    # No es necesario especificar implementaciones, el portal wlr se usará para screencast
+  };
 };
-
 
   # ── Gestor de sesión — greetd + tuigreet ─────────────────────
   # CAMBIO: --cmd sway → --cmd niri
