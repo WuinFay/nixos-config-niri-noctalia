@@ -37,7 +37,7 @@ prefer-no-csd
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "/run/current-system/sw/bin/lxqt-policykit-agent"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store"
-spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 
 
 
@@ -51,7 +51,7 @@ binds {
         spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; 
     }
     
-"Mod+Ctrl+S" { spawn "niri" "msg" "action" "set-dynamic-cast-monitor" "focused"; }
+"Mod+Ctrl+Shift+S" { spawn "niri" "msg" "action" "set-dynamic-cast-monitor" "focused"; }
 
     
 "Print" { spawn "/home/lonso/.config/niri/scripts/screenshot.sh" "screen"; }

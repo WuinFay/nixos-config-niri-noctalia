@@ -71,20 +71,20 @@
           "useFixedWidth": false
         },
         {
-          "compactMode": false,
+          "compactMode": true,
           "hideMode": "hidden",
           "hideWhenIdle": false,
           "id": "MediaMini",
-          "maxWidth": 145,
-          "panelShowAlbumArt": true,
+          "maxWidth": 100,
+          "panelShowAlbumArt": false,
           "scrollingMode": "hover",
-          "showAlbumArt": true,
-          "showArtistFirst": true,
+          "showAlbumArt": false,
+          "showArtistFirst": false,
           "showProgressRing": true,
-          "showVisualizer": false,
+          "showVisualizer": true,
           "textColor": "none",
           "useFixedWidth": false,
-          "visualizerType": "linear"
+          "visualizerType": "wave"
         }
       ],
       "center": [
@@ -592,13 +592,13 @@
     "criticalUrgencyDuration": 15,
     "clearDismissed": true,
     "saveToHistory": {
-      "low": true,
-      "normal": true,
+      "low": false,
+      "normal": false,
       "critical": true
     },
     "sounds": {
-      "enabled": false,
-      "volume": 0.5,
+      "enabled": true,
+      "volume": 0.53,
       "separateSounds": false,
       "criticalSoundFile": "",
       "normalSoundFile": "",

@@ -136,11 +136,13 @@ xdg.portal = {
   enable = true;
   extraPortals = [
     pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-wlr   # ← este es el que necesitas
+    pkgs.xdg-desktop-portal-gnome
   ];
   config.common = {
-    default = [ "gtk" "wlr" ];
-    # No es necesario especificar implementaciones, el portal wlr se usará para screencast
+    default = [ "gtk" ];
+    "org.freedesktop.impl.portal.ScreenCast"    = [ "gnome" ];
+    "org.freedesktop.impl.portal.Screenshot"    = [ "gnome" ];
+    "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
   };
 };
 
@@ -150,7 +152,8 @@ services.greetd = {
   enable = true;
   settings = {
     default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri --session'";
+      #command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri --session'";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd /home/lonso/.local/bin/niri-wrapper";
       user    = "greeter";
     };
   };
@@ -290,7 +293,7 @@ services.greetd = {
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
   # Módulo niri-flake — instala portal file, D-Bus service y ScreenCast
-  #programs.niri.enable = true;
+  programs.niri.enable = true;
 
   # ── Nix store — optimización y GC ────────────────────────────
 nix = {
@@ -320,11 +323,11 @@ nix = {
     # Hardware / periféricos
     openrazer-daemon
     polychromatic
-    niri
+    #niri
     pkgs.xwayland-satellite
-    xorg.libXcursor
+    libxcursor   
+    libx11       
     pkgs.proton-vpn
-    xorg.libX11
     xcursor-themes
     librewolf
     # Terminal / shell
@@ -362,7 +365,7 @@ nix = {
 
     # Apps de escritorio
     nautilus baobab loupe qbittorrent kooha chromium
-    vesktop gnome-text-editor file-roller obsidian
+    vesktop gnome-text-editor file-roller obsidian pkgs.discord-canary
 
     # Ofimática
     libreoffice
