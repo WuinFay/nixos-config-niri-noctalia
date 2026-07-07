@@ -224,6 +224,9 @@ services.greetd = {
   TTYVHangup     = true;
   TTYVTDisallocate = true;
 };
+systemd.user.services.xdg-desktop-portal-gnome = {
+  wantedBy = [ "graphical-session.target" ];
+};
   # ── ZRAM ──────────────────────────────────────────────────────
   zramSwap = {
     enable        = true;
