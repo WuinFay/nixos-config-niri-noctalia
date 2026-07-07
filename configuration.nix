@@ -326,6 +326,7 @@ nix = {
     # Hardware / periféricos
     openrazer-daemon
     polychromatic
+    yt-dlp
     #niri
     pkgs.xwayland-satellite
     libxcursor   
