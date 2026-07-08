@@ -47,9 +47,14 @@ binds {
     "Mod+M" { spawn "gnome-text-editor"; }
     "Mod+Q" { close-window; }
 
-    "Mod+D" hotkey-overlay-title="Toggle Launcher" { 
-        spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; 
-    }
+"Mod+Shift+D" hotkey-overlay-title="Toggle Launcher" {
+    spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
+}
+
+"Mod+W" { focus-workspace-up; }
+"Mod+S" { focus-workspace-down; }
+"Mod+A" { focus-column-left; }
+"Mod+D" { focus-column-right; }
     
 "Mod+Ctrl+Shift+S" { spawn "niri" "msg" "action" "set-dynamic-cast-monitor" "focused"; }
 
