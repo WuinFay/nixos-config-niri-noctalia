@@ -25,6 +25,9 @@
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    
+
 
     # niri-flake — módulo NixOS + Home Manager para Niri compositor
     niri-flake = {

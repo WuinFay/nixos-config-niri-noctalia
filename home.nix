@@ -19,6 +19,7 @@
 
   # ── Niri — compositor Wayland ─────────────────────────────────
 home.file = {
+  ".config/niriswitcher/config.toml".source = ./niriswitcher-config.toml;
   ".config/niri/config.kdl".source = ./niri-config.kdl;
   ".config/niri/scripts/screenshot.sh" = {
     source = ./scripts/screenshot-niri.sh;

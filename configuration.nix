@@ -328,6 +328,7 @@ nix = {
     polychromatic
     yt-dlp
     #niri
+    niriswitcher
     pkgs.xwayland-satellite
     libxcursor   
     libx11       
