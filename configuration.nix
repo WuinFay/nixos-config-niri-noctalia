@@ -125,7 +125,7 @@
     enable   = true;
     terminal = "sakura";
   };
-
+  
 
   # Niri implementa el portal ScreenCast de forma nativa (a diferencia
   # de Sway que necesitaba xdg-desktop-portal-wlr).
@@ -297,7 +297,7 @@ systemd.user.services.xdg-desktop-portal-gnome = {
   programs.gamescope.enable = true;
   # Módulo niri-flake — instala portal file, D-Bus service y ScreenCast
   programs.niri.enable = true;
-
+  programs.gpu-screen-recorder.enable = true;
   # ── Nix store — optimización y GC ────────────────────────────
 nix = {
   settings = {
@@ -325,6 +325,7 @@ nix = {
   environment.systemPackages = with pkgs; [
     # Hardware / periféricos
     openrazer-daemon
+    gpu-screen-recorder-gtk
     polychromatic
     yt-dlp
     #niri
@@ -334,7 +335,7 @@ nix = {
     libx11       
     pkgs.proton-vpn
     xcursor-themes
-    librewolf
+    #librewolf
     # Terminal / shell
     sakura micro fastfetch htop config.boot.kernelPackages.cpupower
 
@@ -370,7 +371,8 @@ nix = {
 
     # Apps de escritorio
     nautilus baobab loupe qbittorrent kooha chromium
-    vesktop gnome-text-editor file-roller obsidian pkgs.discord-canary
+    vesktop gnome-text-editor file-roller obsidian 
+    #discord-canary
 
     # Ofimática
     libreoffice
