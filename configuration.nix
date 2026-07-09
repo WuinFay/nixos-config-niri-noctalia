@@ -23,6 +23,7 @@
     options snd-hda-intel power_save=0 power_save_controller=N
   '';
   boot.kernelParams = [
+    "amdgpu.ppfeaturemask=0xffffffff"
     "amd_pstate=active"
   ];
 
