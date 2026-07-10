@@ -35,7 +35,7 @@ home.file = {
     # ── Paleta de colores (Glassmorphism espacial) ────────────────
     # Basada en tu waybar/colors.css y tu tema de Sway
     # Material 3 color system requerido por Noctalia v4
-    colors = {
+    /*colors = {
       mBackground          = "#1a1b26"; # Tokyo Night base
       mOnBackground        = "#c0caf5"; # texto principal
       mSurface             = "#16161e"; # paneles
@@ -57,7 +57,7 @@ home.file = {
       mInversePrimary      = "#0a8caa";
       mSurfaceTint         = "#00d4ff";
       mScrim               = "#000000";
-    };
+    };*/
 
     # ── Configuración del shell ───────────────────────────────────
   settings = builtins.fromJSON (builtins.readFile ./noctalia-settings.json);

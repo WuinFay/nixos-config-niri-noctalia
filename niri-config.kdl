@@ -23,7 +23,7 @@ input {
 
 layout {
     gaps 7
-    default-column-width { proportion 1.0; }  
+    default-column-width { proportion 1.0; } 
     border {
         width 2
         active-color "#00d4ffff"
