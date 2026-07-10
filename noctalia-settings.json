@@ -19,8 +19,8 @@
     "marginHorizontal": 4,
     "frameThickness": 8,
     "frameRadius": 12,
-    "outerCorners": false,
-    "hideOnOverview": false,
+    "outerCorners": true,
+    "hideOnOverview": true,
     "displayMode": "always_visible",
     "autoHideDelay": 500,
     "autoShowDelay": 150,
@@ -161,19 +161,6 @@
             "workspaceSplitThreshold": 12
           },
           "id": "plugin:keybind-cheatsheet"
-        },
-        {
-          "defaultSettings": {
-            "activeColor": "primary",
-            "camFilterRegex": "",
-            "enableToast": true,
-            "hideInactive": false,
-            "iconSpacing": 4,
-            "inactiveColor": "none",
-            "micFilterRegex": "",
-            "removeMargins": false
-          },
-          "id": "plugin:privacy-indicator"
         }
       ],
       "center": [
@@ -192,7 +179,7 @@
           "labelMode": "index",
           "occupiedColor": "secondary",
           "pillSize": 0.67,
-          "showApplications": false,
+          "showApplications": true,
           "showApplicationsHover": false,
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": false,
@@ -215,6 +202,19 @@
         }
       ],
       "right": [
+        {
+          "defaultSettings": {
+            "activeColor": "primary",
+            "camFilterRegex": "",
+            "enableToast": true,
+            "hideInactive": false,
+            "iconSpacing": 4,
+            "inactiveColor": "none",
+            "micFilterRegex": "",
+            "removeMargins": false
+          },
+          "id": "plugin:privacy-indicator"
+        },
         {
           "blacklist": [],
           "chevronColor": "none",
@@ -243,13 +243,6 @@
         {
           "displayMode": "onhover",
           "iconColor": "none",
-          "id": "Microphone",
-          "middleClickCommand": "pwvucontrol || pavucontrol",
-          "textColor": "none"
-        },
-        {
-          "displayMode": "onhover",
-          "iconColor": "none",
           "id": "Volume",
           "middleClickCommand": "pwvucontrol || pavucontrol",
           "textColor": "none"
@@ -261,10 +254,6 @@
           "id": "NotificationHistory",
           "showUnreadBadge": true,
           "unreadBadgeColor": "primary"
-        },
-        {
-          "iconColor": "error",
-          "id": "SessionMenu"
         }
       ]
     },
@@ -391,12 +380,12 @@
   },
   "wallpaper": {
     "enabled": true,
-    "overviewEnabled": false,
+    "overviewEnabled": true,
     "directory": "/home/lonso/Documentos",
     "monitorDirectories": [],
     "enableMultiMonitorDirectories": false,
     "showHiddenFiles": false,
-    "viewMode": "single",
+    "viewMode": "recursive",
     "setWallpaperOnAllMonitors": true,
     "linkLightAndDarkWallpapers": true,
     "fillMode": "crop",
@@ -417,8 +406,8 @@
     "panelPosition": "follow_bar",
     "hideWallpaperFilenames": false,
     "useOriginalImages": true,
-    "overviewBlur": 0.45,
-    "overviewTint": 0.49,
+    "overviewBlur": 0.4,
+    "overviewTint": 0.6,
     "useWallhaven": false,
     "wallhavenQuery": "",
     "wallhavenSorting": "relevance",
@@ -457,7 +446,7 @@
     "terminalCommand": "sakura -e",
     "customLaunchPrefixEnabled": false,
     "customLaunchPrefix": "",
-    "viewMode": "list",
+    "viewMode": "grid",
     "showCategories": true,
     "iconMode": "tabler",
     "showIconBackground": false,
@@ -478,9 +467,6 @@
           "id": "Network"
         },
         {
-          "id": "Bluetooth"
-        },
-        {
           "id": "WallpaperSelector"
         },
         {
@@ -490,12 +476,6 @@
       "right": [
         {
           "id": "Notifications"
-        },
-        {
-          "id": "PowerProfile"
-        },
-        {
-          "id": "KeepAwake"
         },
         {
           "id": "NightLight"
@@ -577,7 +557,7 @@
     "launcherUseDistroLogo": false,
     "launcherIcon": "",
     "launcherIconColor": "none",
-    "pinnedStatic": false,
+    "pinnedStatic": true,
     "inactiveIndicators": true,
     "groupApps": true,
     "groupContextMenuMode": "extended",
@@ -725,13 +705,13 @@
   },
   "brightness": {
     "brightnessStep": 5,
-    "enforceMinimum": true,
-    "enableDdcSupport": true,
+    "enforceMinimum": false,
+    "enableDdcSupport": false,
     "backlightDeviceMappings": []
   },
   "colorSchemes": {
     "useWallpaperColors": false,
-    "predefinedScheme": "Nord",
+    "predefinedScheme": "Noctalia (default)",
     "darkMode": true,
     "schedulingMode": "off",
     "manualSunrise": "06:30",

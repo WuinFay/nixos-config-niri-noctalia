@@ -25,7 +25,7 @@ layout {
     gaps 7
     default-column-width { proportion 1.0; }  
     border {
-        width 3
+        width 2
         active-color "#00d4ffff"
         inactive-color "#16161eff"
     }

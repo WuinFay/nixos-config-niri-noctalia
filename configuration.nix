@@ -23,7 +23,6 @@
     options snd-hda-intel power_save=0 power_save_controller=N
   '';
   boot.kernelParams = [
-    "amdgpu.ppfeaturemask=0xffffffff"
     "amd_pstate=active"
   ];
 
@@ -170,6 +169,7 @@ services.greetd = {
   };
   hardware.amdgpu.initrd.enable    = true;
   hardware.amdgpu.overdrive.enable = true;
+
 
   # ── OpenRazer ─────────────────────────────────────────────────
   hardware.openrazer.enable = true;
