@@ -381,7 +381,7 @@
   "wallpaper": {
     "enabled": true,
     "overviewEnabled": true,
-    "directory": "/home/lonso/Documentos",
+    "directory": "/home/lonso/Imágenes/fondos",
     "monitorDirectories": [],
     "enableMultiMonitorDirectories": false,
     "showHiddenFiles": false,
@@ -406,8 +406,8 @@
     "panelPosition": "follow_bar",
     "hideWallpaperFilenames": false,
     "useOriginalImages": true,
-    "overviewBlur": 0.4,
-    "overviewTint": 0.6,
+    "overviewBlur": 0,
+    "overviewTint": 0,
     "useWallhaven": false,
     "wallhavenQuery": "",
     "wallhavenSorting": "relevance",
@@ -710,13 +710,13 @@
     "backlightDeviceMappings": []
   },
   "colorSchemes": {
-    "useWallpaperColors": false,
+    "useWallpaperColors": true,
     "predefinedScheme": "Noctalia (default)",
     "darkMode": true,
     "schedulingMode": "off",
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
-    "generationMethod": "tonal-spot",
+    "generationMethod": "dysfunctional",
     "monitorForColors": "",
     "syncGsettings": false
   },
