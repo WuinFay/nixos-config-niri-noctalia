@@ -206,7 +206,18 @@ services.greetd = {
     ];
   };
   
-
+  # ── Numlock activo desde consola/greeter ──────────────────────
+systemd.services.numlock-on-vt = {
+  description = "Activar numlock en todas las TTYs virtuales";
+  wantedBy    = [ "multi-user.target" ];
+  before      = [ "greetd.service" ];
+  serviceConfig.Type = "oneshot";
+  script = ''
+    for tty in /dev/tty{1..6}; do
+      ${pkgs.kbd}/bin/setleds -D +num < "$tty" || true
+    done
+  '';
+};
   # ── RyzenAdj — temperatura máxima 75 °C ──────────────────────
   systemd.services.ryzenadj = {
     description = "Aplicar límites de RyzenAdj al inicio";

@@ -5,8 +5,8 @@
     "position": "top",
     "monitors": [],
     "density": "comfortable",
-    "showOutline": false,
-    "showCapsule": true,
+    "showOutline": true,
+    "showCapsule": false,
     "capsuleOpacity": 0.76,
     "capsuleColorKey": "none",
     "widgetSpacing": 6,
@@ -280,7 +280,7 @@
     "screenRadiusRatio": 1,
     "animationSpeed": 1,
     "animationDisabled": false,
-    "compactLockScreen": false,
+    "compactLockScreen": true,
     "lockScreenAnimations": false,
     "lockOnSuspend": true,
     "showSessionButtonsOnLockScreen": true,
@@ -341,7 +341,7 @@
     "scrollbarAlwaysVisible": true,
     "boxBorderEnabled": false,
     "panelBackgroundOpacity": 0.87,
-    "translucentWidgets": true,
+    "translucentWidgets": false,
     "panelsAttachedToBar": true,
     "settingsPanelMode": "attached",
     "settingsPanelSideBarCardStyle": false
@@ -406,8 +406,8 @@
     "panelPosition": "follow_bar",
     "hideWallpaperFilenames": false,
     "useOriginalImages": true,
-    "overviewBlur": 0,
-    "overviewTint": 0,
+    "overviewBlur": 0.4,
+    "overviewTint": 0.6,
     "useWallhaven": false,
     "wallhavenQuery": "",
     "wallhavenSorting": "relevance",
@@ -533,7 +533,7 @@
     "externalMonitor": "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor"
   },
   "noctaliaPerformance": {
-    "disableWallpaper": true,
+    "disableWallpaper": false,
     "disableDesktopWidgets": true
   },
   "dock": {
@@ -764,7 +764,7 @@
     "customCommands": "[]"
   },
   "desktopWidgets": {
-    "enabled": true,
+    "enabled": false,
     "overviewEnabled": true,
     "gridSnap": false,
     "gridSnapScale": false,
