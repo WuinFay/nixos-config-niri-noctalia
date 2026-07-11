@@ -100,6 +100,8 @@
   # programs.sway eliminado — reemplazado por Niri
   programs.dconf.enable  = true;
   programs.xwayland.enable = true;
+  #programs.niri.enable = true;
+
   security.polkit.enable = true;
   
   # ── nix-ld — para binarios foráneos (playit.gg, etc.) ─────────
@@ -342,8 +344,7 @@ nix = {
     polychromatic
     yt-dlp
     #niri
-    niriswitcher
-    pkgs.xwayland-satellite
+    #pkgs.xwayland-satellite
     libxcursor   
     libx11       
     pkgs.proton-vpn
@@ -365,7 +366,6 @@ nix = {
     slurp                 # selección de área
     wl-clipboard          # clipboard
     wf-recorder           # grabación de pantalla
-    cliphist              # historial de portapapeles
     jq                    # NUEVO: parsear JSON de `niri msg` en scripts
     lxqt.lxqt-policykit  # agente Polkit
 

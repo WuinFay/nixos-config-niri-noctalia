@@ -18,14 +18,16 @@
   home.stateVersion  = "26.05";
 
   # ── Niri — compositor Wayland ─────────────────────────────────
-  home.file = {
-    ".config/niriswitcher/config.toml".source = ./niriswitcher-config.toml;
-    ".config/niri/config.kdl".source = ./niri-config.kdl;
-    ".config/niri/scripts/screenshot.sh" = {
-      source = ./scripts/screenshot-niri.sh;
-      executable = true;   # ← añade esto
-    };
+home.file = {
+  ".config/niri/config.kdl".source = ./niri-config.kdl;
+
+  ".config/niri/scripts/screenshot.sh" = {
+    source = ./scripts/screenshot-niri.sh;
+    executable = true;
   };
+
+
+};
 
 # ── Configuración de GTK (Elimina sombras y bordes internos) ──
   gtk = {
@@ -45,9 +47,6 @@
       '';
     };
   };
-    # ── Servicio de usuario para niriswitcher ──────────────────────
-  # Más confiable que spawn-at-startup, se reinicia si falla
-  # y espera realmente a graphical-session.target.
 
     # ── Activar Bloq Num al iniciar sesión ─────────────────────────
   systemd.user.services.numlockx = {

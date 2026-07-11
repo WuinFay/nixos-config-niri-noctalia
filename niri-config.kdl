@@ -36,16 +36,13 @@ spawn-at-startup "/run/current-system/sw/bin/lxqt-policykit-agent"
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
-spawn-at-startup "bash" "-c" "sleep 2 && exec niriswitcher"
+
 
 
 binds {
-    "Alt+Tab" repeat=false { spawn "niriswitcherctl" "show" "--window"; }
-    "Alt+Shift+Tab" repeat=false { spawn "niriswitcherctl" "show" "--window"; }
     "Mod+Return" { spawn "sakura"; }
-    "Mod+M" { spawn "gnome-text-editor"; }
     "Mod+Q" { close-window; }
-
+"Alt+Tab" repeat=false { toggle-overview; }
 "Mod+Shift+D" hotkey-overlay-title="Toggle Launcher" {
     spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
 }
@@ -68,7 +65,6 @@ binds {
     "XF86AudioLowerVolume" { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"; }
     "XF86AudioMute" { spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"; }
 
-    "Mod+Shift+X" { spawn "bash" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy"; }
 
     "Mod+Left" { focus-column-left; }
     "Mod+Right" { focus-column-right; }
