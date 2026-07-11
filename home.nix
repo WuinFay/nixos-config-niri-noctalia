@@ -20,15 +20,27 @@
   # ── Niri — compositor Wayland ─────────────────────────────────
 home.file = {
   ".config/niri/config.kdl".source = ./niri-config.kdl;
-
   ".config/niri/scripts/screenshot.sh" = {
     source = ./scripts/screenshot-niri.sh;
     executable = true;
   };
+  ".config/fuzzel/fuzzel.ini".text = ''
+    [main]
+    font = "JetBrainsMono Nerd Font:size=11"
+    icon-theme = "hicolor"
+    width = 40
+    lines = 10
 
-
+    [colors]
+    background = 1e1e2edd
+    text = cdd6f4ff
+    match = 89b4faff
+    selection = 313244ff
+    selection-text = cdd6f4ff
+    selection-match = 89b4faff
+    border = 89b4faff
+  '';
 };
-
 # ── Configuración de GTK (Elimina sombras y bordes internos) ──
   gtk = {
     enable = true;

@@ -344,7 +344,10 @@ nix = {
     polychromatic
     yt-dlp
     #niri
-    #pkgs.xwayland-satellite
+    fuzzel
+    fuzzel
+    nix-search-cli
+    pkgs.xwayland-satellite
     libxcursor   
     libx11       
     pkgs.proton-vpn

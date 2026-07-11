@@ -42,7 +42,9 @@ spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
 binds {
     "Mod+Return" { spawn "sakura"; }
     "Mod+Q" { close-window; }
-"Alt+Tab" repeat=false { toggle-overview; }
+    
+"Alt+Tab" repeat=false { spawn "bash" "-c" "niri msg --json windows | jq -r '.[] | (if .app_id == \"sakura\" then \"\\uf120\" elif .app_id == \"org.gnome.Nautilus\" then \"\\uf07b\" elif .app_id == \"org.gnome.TextEditor\" then \"\\uf0f6\" elif .app_id == \"mpv\" then \"\\uf008\" elif .app_id == \"obsidian\" then \"\\uf249\" elif .app_id == \"libreoffice-writer\" then \"\\uf1c2\" elif .app_id == \"chromium\" or .app_id == \"chromium-browser\" then \"\\uf268\" elif .app_id == \"org.gnome.Loupe\" then \"\\uf03e\" elif .app_id == \"vesktop\" then \"\\uf392\" else \"\\uf2d0\" end) as $icon | \"\\(.id)\\t\\($icon)  \\(.app_id) — \\(.title)\"' | fuzzel --dmenu --with-nth 2 --accept-nth 1 | xargs -I{} niri msg action focus-window --id {}"; }
+
 "Mod+Shift+D" hotkey-overlay-title="Toggle Launcher" {
     spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
 }
