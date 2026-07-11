@@ -1,7 +1,7 @@
 {
   "settingsVersion": 59,
   "bar": {
-    "barType": "simple",
+    "barType": "floating",
     "position": "top",
     "monitors": [],
     "density": "comfortable",
@@ -533,7 +533,7 @@
     "externalMonitor": "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor"
   },
   "noctaliaPerformance": {
-    "disableWallpaper": false,
+    "disableWallpaper": true,
     "disableDesktopWidgets": true
   },
   "dock": {

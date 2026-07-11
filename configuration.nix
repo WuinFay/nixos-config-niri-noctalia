@@ -345,7 +345,6 @@ nix = {
     yt-dlp
     #niri
     fuzzel
-    fuzzel
     nix-search-cli
     pkgs.xwayland-satellite
     libxcursor   

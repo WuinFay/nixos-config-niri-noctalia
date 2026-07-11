@@ -5,20 +5,17 @@
 Configuración personal de NixOS (Flakes) para un escritorio Wayland con **Niri** como
 compositor y **Noctalia** (v4) como shell.
 
-## Stack
-
 - **NixOS unstable** (rolling release vía `nixpkgs`).
-- **Niri** **25.08**.
-- **Noctalia v4/legacy**
-- **niriswitcher** (`pkgs.niriswitcher`, Python/GTK4) como switcher tipo Alt+Tab por workspace.
-- **gpu-screen-recorder** + `gpu-screen-recorder-gtk` para grabación de pantalla (encoding por
-  hardware, vía portal ScreenCast).
+- **Niri 25.08** (pinneado vía `niri-flake`).
+- **Noctalia v4/legacy**.
+- **fuzzel** como selector de ventanas (Alt+Tab)
+- **gpu-screen-recorder** 
 
-### Nota sobre `noctalia-settings.json`
+## Nota sobre `noctalia-settings.json`
 
-cambiás algo
-en la GUI de Noctalia → botón "copiar config" → pegás el JSON actualizado en este archivo →
-commit. Se acepta así de manual a propósito
+Cuando cambiás algo en la GUI de Noctalia → botón "copiar config" → pegás el JSON actualizado
+en este archivo → commit. Se acepta así de manual a propósito (Noctalia v5, que sí tendría
+config declarativa nativa, sigue en beta — ver sección de plugins).
 
 - Grabador de pantalla en uso es `gpu-screen-recorder`.
 
