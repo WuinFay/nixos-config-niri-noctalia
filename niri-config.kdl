@@ -27,6 +27,7 @@ layout {
     // Sin bloque border, no hay bordes externos
 }
 
+
 prefer-no-csd
 
 
