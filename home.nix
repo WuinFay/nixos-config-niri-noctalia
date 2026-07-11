@@ -18,14 +18,53 @@
   home.stateVersion  = "26.05";
 
   # ── Niri — compositor Wayland ─────────────────────────────────
-home.file = {
-  ".config/niriswitcher/config.toml".source = ./niriswitcher-config.toml;
-  ".config/niri/config.kdl".source = ./niri-config.kdl;
-  ".config/niri/scripts/screenshot.sh" = {
-    source = ./scripts/screenshot-niri.sh;
-    executable = true;   # ← añade esto
+  home.file = {
+    ".config/niriswitcher/config.toml".source = ./niriswitcher-config.toml;
+    ".config/niri/config.kdl".source = ./niri-config.kdl;
+    ".config/niri/scripts/screenshot.sh" = {
+      source = ./scripts/screenshot-niri.sh;
+      executable = true;   # ← añade esto
+    };
   };
-};
+
+# ── Configuración de GTK (Elimina sombras y bordes internos) ──
+  gtk = {
+    enable = true;
+    gtk3 = {
+      extraConfig = { gtk-application-prefer-dark-theme = 1; };
+      extraCss = ''
+        window, .window-frame, .window-frame:backdrop { box-shadow: none; border: none; margin: 0; padding: 0; }
+        decoration, decoration:backdrop { box-shadow: none; border: none; }
+      '';
+    };
+    gtk4 = {
+      extraConfig = { gtk-application-prefer-dark-theme = 1; };
+      extraCss = ''
+        window, .window-frame, .window-frame:backdrop { box-shadow: none; border: none; margin: 0; padding: 0; }
+        decoration, decoration:backdrop { box-shadow: none; border: none; }
+      '';
+    };
+  };
+    # ── Servicio de usuario para niriswitcher ──────────────────────
+  # Más confiable que spawn-at-startup, se reinicia si falla
+  # y espera realmente a graphical-session.target.
+
+    # ── Activar Bloq Num al iniciar sesión ─────────────────────────
+  systemd.user.services.numlockx = {
+    Unit = {
+      Description = "Activar Bloq Num en sesión Wayland";
+      After = "graphical-session.target";
+      PartOf = "graphical-session.target";
+    };
+    Service = {
+      ExecStart = "${pkgs.numlockx}/bin/numlockx on";
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 
   # ── Noctalia — desktop shell unificado ────────────────────────
   # Reemplaza: Waybar + Rofi + Wlogout + Swaylock + Swayidle + Wlsunset
@@ -60,6 +99,6 @@ home.file = {
     };*/
 
     # ── Configuración del shell ───────────────────────────────────
-  settings = builtins.fromJSON (builtins.readFile ./noctalia-settings.json);
+    settings = builtins.fromJSON (builtins.readFile ./noctalia-settings.json);
   };
 }

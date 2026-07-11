@@ -205,6 +205,7 @@ services.greetd = {
       }
     ];
   };
+  
 
   # ── RyzenAdj — temperatura máxima 75 °C ──────────────────────
   systemd.services.ryzenadj = {

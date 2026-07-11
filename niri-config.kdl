@@ -22,13 +22,9 @@ input {
 }
 
 layout {
-    gaps 7
-    default-column-width { proportion 1.0; } 
-    border {
-        width 2
-        active-color "#00d4ffff"
-        inactive-color "#16161eff"
-    }
+    gaps 5
+    default-column-width { proportion 1.0; }  
+    // Sin bloque border, no hay bordes externos
 }
 
 prefer-no-csd
@@ -36,10 +32,10 @@ prefer-no-csd
 
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "/run/current-system/sw/bin/lxqt-policykit-agent"
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store"
+
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
-spawn-at-startup "bash" "-c" "sleep 2 && niriswitcher"
+spawn-at-startup "bash" "-c" "sleep 2 && exec niriswitcher"
 
 
 binds {
@@ -126,8 +122,13 @@ binds {
 window-rule {
     match app-id="sakura"
     open-floating true
-    default-column-width { proportion 0.45; }
+    default-column-width { proportion 1.0; }
     opacity 0.95
+}
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
 }
 
 window-rule {
