@@ -123,7 +123,7 @@ binds {
 window-rule {
     match app-id="sakura"
     open-floating true
-    default-column-width { proportion 1.0; }
+
     opacity 0.95
 }
 

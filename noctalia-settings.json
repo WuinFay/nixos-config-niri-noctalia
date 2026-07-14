@@ -172,7 +172,7 @@
     "screenOverrides": []
   },
   "general": {
-    "avatarImage": "/home/lonso/Documentos/fondo.jpg",
+    "avatarImage": "/home/lonso/Imágenes/fondos/fondo.jpg",
     "dimmerOpacity": 0,
     "showScreenCorners": true,
     "forceBlackScreenCorners": false,
@@ -180,7 +180,7 @@
     "radiusRatio": 1,
     "iRadiusRatio": 1,
     "boxRadiusRatio": 1,
-    "screenRadiusRatio": 1,
+    "screenRadiusRatio": 0,
     "animationSpeed": 1,
     "animationDisabled": false,
     "compactLockScreen": true,
