@@ -122,19 +122,17 @@ binds {
 
 window-rule {
     match app-id="sakura"
-    open-floating true
-
     opacity 0.95
 }
 
 window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
+    open-maximized true
 }
 
 window-rule {
     match app-id="steam"
-    open-floating true
 }
 
 window-rule {

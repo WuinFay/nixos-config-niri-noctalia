@@ -309,8 +309,8 @@
     "panelPosition": "follow_bar",
     "hideWallpaperFilenames": false,
     "useOriginalImages": true,
-    "overviewBlur": 0.4,
-    "overviewTint": 0.6,
+    "overviewBlur": 0,
+    "overviewTint": 0,
     "useWallhaven": false,
     "wallhavenQuery": "",
     "wallhavenSorting": "relevance",
@@ -452,7 +452,10 @@
     "pinnedApps": [
       "chromium",
       "obsidian",
-      "org.gnome.Nautilus"
+      "org.gnome.Nautilus",
+      "org.gnome.TextEditor",
+      "proton.vpn.app.gtk",
+      "com.dec05eba.gpu_screen_recorder"
     ],
     "colorizeIcons": false,
     "showLauncherIcon": true,
