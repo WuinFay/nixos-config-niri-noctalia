@@ -86,8 +86,7 @@ home.file = {
     # Basada en tu waybar/colors.css y tu tema de Sway
     # Material 3 color system requerido por Noctalia v4
     /*colors = {
-      mBackground          = "#1a1b26"; # Tokyo Night base
-      mOnBackground        = "#c0caf5"; # texto principal
+ 
       mSurface             = "#16161e"; # paneles
       mOnSurface           = "#c0caf5";
       mPrimary             = "#00d4ff"; # cian neón (acento principal)

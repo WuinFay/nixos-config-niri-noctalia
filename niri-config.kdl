@@ -12,7 +12,7 @@ input {
         xkb {
             layout "latam"
         }
-        repeat-delay 400
+        repeat-delay 400     
         repeat-rate 25
     }
     mouse {
@@ -23,8 +23,10 @@ input {
 
 layout {
     gaps 5
-    default-column-width { proportion 1.0; }  
-    // Sin bloque border, no hay bordes externos
+
+    background-color "transparent"
+
+default-column-width { proportion 1.0; }
 }
 
 
