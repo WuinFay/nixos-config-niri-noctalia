@@ -33,25 +33,25 @@ alias turbo='sudo /run/current-system/sw/bin/perfil-cpu turbo'
 alias nadmin='nautilus admin:///'
 
 # 1. Actualizar el sistema localmente (sin subir a GitHub)
-alias actualizar='sudo nixos-rebuild switch --flake ~/nixos-config#nixos'
+#alias actualizar='sudo nixos-rebuild switch --flake ~/nixos-config#nixos'
 
 
 # 2. Revisar el Flake sin modificar nada
-alias revisar='cd ~/nixos-config && nix flake check'
+#alias revisar='cd ~/nixos-config && nix flake check'
 
 
 # 3. Copiar dotfiles de ~/.config al repo (paso previo a respaldar)
-alias copiar-config='\
-  echo "📂 Copiando dotfiles esenciales al repo..." && \
-  cp ~/.bashrc ~/nixos-config/dotfiles/.bashrc && \
-  for dir in fastfetch gtk-3.0 gtk-4.0 rofi sakura sway waybar wlogout; do \
-    if [ -d ~/.config/$dir ]; then \
-      cp -r ~/.config/$dir ~/nixos-config/dotfiles/.config/; \
-    else \
-      echo "⚠️  Omitido: ~/.config/$dir no existe"; \
-    fi; \
-  done && \
-  echo "✅ Dotfiles copiados. Ahora ejecuta: respaldar"'
+#alias copiar-config='\
+ # echo "📂 Copiando dotfiles esenciales al repo..." && \
+  #cp ~/.bashrc ~/nixos-config/dotfiles/.bashrc && \
+  #for dir in fastfetch gtk-3.0 gtk-4.0 rofi sakura sway waybar wlogout; do \
+   # if [ -d ~/.config/$dir ]; then \
+      #cp -r ~/.config/$dir ~/nixos-config/dotfiles/.config/; \
+   # else \
+      #echo "⚠️  Omitido: ~/.config/$dir no existe"; \
+    #fi; \
+  #done && \
+  #echo "✅ Dotfiles copiados. Ahora ejecuta: respaldar"'
 alias copiar-config-niri='\
   echo "📂 Copiando dotfiles al repo Niri..." && \
   cp ~/.bashrc ~/nixos-config-niri/dotfiles/.bashrc && \
@@ -64,11 +64,11 @@ alias copiar-config-niri='\
   done && \
   echo "✅ Dotfiles copiados. Ahora ejecuta: respaldar-niri"'
 # 4. Commit y push al repo (ejecutar después de copiar-config)
-alias respaldar='\
-  cd ~/nixos-config && \
-  git add -A && \
-  git commit -m "Backup: $(date +%d-%m-%Y_%H:%M)" && \
-  git push --force-with-lease origin main'
+#alias respaldar='\
+ # cd ~/nixos-config && \
+  #git add -A && \
+  #git commit -m "Backup: $(date +%d-%m-%Y_%H:%M)" && \
+  #git push --force-with-lease origin main'
 # ── Juegos ──────────────────────────────────
 alias tmod="cd $HOME/Tmod/tModLoader && ./start-tModLoaderServer.sh -config serverconfig.txt"
 

@@ -125,7 +125,7 @@
   # ── Nautilus — abrir terminal con clic derecho ────────────────
   programs.nautilus-open-any-terminal = {
     enable   = true;
-    terminal = "sakura";
+    terminal = "kitty";
   };
   
 
@@ -353,7 +353,7 @@ nix = {
     xcursor-themes
     #librewolf
     # Terminal / shell
-    sakura micro fastfetch htop config.boot.kernelPackages.cpupower
+    sakura micro fastfetch htop config.boot.kernelPackages.cpupower kitty
 
     # Íconos y temas GTK
     adwaita-icon-theme

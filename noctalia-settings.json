@@ -346,7 +346,7 @@
       "proton.vpn.app.gtk"
     ],
     "sortByMostUsed": true,
-    "terminalCommand": "sakura -e",
+    "terminalCommand": "kitty -e",
     "customLaunchPrefixEnabled": false,
     "customLaunchPrefix": "",
     "viewMode": "grid",
