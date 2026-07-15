@@ -353,7 +353,7 @@ nix = {
     xcursor-themes
     #librewolf
     # Terminal / shell
-    sakura micro fastfetch htop config.boot.kernelPackages.cpupower kitty
+    sakura micro fastfetch htop config.boot.kernelPackages.cpupower kitty ghostty
 
     # Íconos y temas GTK
     adwaita-icon-theme

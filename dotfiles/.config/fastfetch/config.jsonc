@@ -1,0 +1,86 @@
+{
+  "$schema": "https://github.com",
+"logo": {
+    // ---- CONFIGURACIÓN DE LOGO NIXOS ----
+    // Comentamos la línea de abajo (o la borramos) para quitar el logo GRANDE
+    // "type": "auto",
+    // Descomentamos la línea de abajo para el icono PEQUEÑO
+    "type": "small",
+    "padding": {
+      "top": 5,
+      "left": 3
+    }
+  },
+  "modules": [
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌──────────────────────Software─────────────────────┐"
+    },
+    {
+      "type": "os",
+      "key": "│   OS      ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "kernel",
+      "key": "│  Kernel  ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wm",
+      "key": "│  WM      ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└───────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌──────────────────────Hardware─────────────────────┐"
+    },
+    {
+      "type": "host",
+      "key": "│    Base    ",
+      "keyColor": "green"
+    },
+    {
+      "type": "display",
+      "key": "│    Display ",
+      "keyColor": "green"
+    },
+    {
+      "type": "cpu",
+      "key": "│ ├ CPU     ",
+      "keyColor": "green"
+    },
+    {
+      "type": "gpu",
+      "key": "│ ├   GPU     ",
+      "keyColor": "green"
+    },
+    {
+      "type": "memory",
+      "key": "│ ├   RAM     ",
+      "keyColor": "green"
+    },
+    {
+      "type": "disk",
+      "key": "│ └   Disk    ",
+      "keyColor": "green"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└───────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
+}
+
