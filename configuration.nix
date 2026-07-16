@@ -15,8 +15,8 @@
   boot.loader.timeout = 6;
   boot.loader.systemd-boot.configurationLimit = 8;
 
-  # Kernel latest (rolling release)
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+# Kernel zen — mejor scheduling/latencia para desktop/gaming
+boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # ── Solución al "pop" de audio ────────────────────────────────
   boot.extraModprobeConfig = ''
